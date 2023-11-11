@@ -14,10 +14,12 @@ frame = 0
 while True:
     clear_canvas()
 
-    b_rope.clip_draw(frame * 100, 0, 100, 150, w // 2, 2*h // 3, 2*w//3, h//3)
-    f_rope.clip_draw(frame * 100, 0, 100, 150, w // 2, 1*h // 3, 2*w//3, h//3)
+    f = 140
+
+    b_rope.clip_draw(frame * f, 0, 93, 150, w // 2, 2*h // 3, 2*w//3, h//3)
+    f_rope.clip_draw(frame * f, 0, 93, 150, w // 2, 1*h // 3, 2*w//3, h//3)
 
     update_canvas()
 
-    frame = (frame + 1) % 8
-    delay(0.1)
+    frame = (frame + 1) % 5
+    delay(0.13)
