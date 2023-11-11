@@ -1,13 +1,16 @@
 from pico2d import *
-import Img_no_change
+import Img
 
 # 캔버스 사이즈
 w = 564
 h = 1001
+open_canvas(w, h)
 
 # 시작 이미지 불러오기
-Img_no_change.start_img(w, h)
-open_canvas(w, h)
+Img.start_img(w, h)
+
+# 설명창
+exp = load_image('explain.jpg')
 
 click = 0
 
@@ -38,20 +41,15 @@ while starting:
         level1 == True
         starting == False
 
-#플레이 이미지
-ropper1 = load_image('ropping1.png')
-ropper2 = load_image('ropping2.jpg')
+
+#레벨1 배경 이미지 호출
+Img.level_background.level1(w, h)
+#줄 돌리는 사람 이미지
+Img.two_roper(w, h)
 
 #움직이는 로프 이미지
-b_rope = load_image('back_rope.png')
-f_rope = load_image('front_rope.jpg')
+Img.draw_rope(w, h)
 
-#레벨 이미지
-lev1_back = load_image('level1_back.png')
-
-lev1_back.draw_now(w//2, h//2)
-ropper1.draw_now(w//2, 4*h//5)
-ropper2.draw_now(w//2, h//5)
 
 level1 = False
 
