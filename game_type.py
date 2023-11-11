@@ -6,54 +6,55 @@ w = 564
 h = 1001
 open_canvas(w, h)
 
+lev1 = False
+
+def handle_events():
+    global starting
+    global click
+    click = 0
+
+    global lev1
+
+
+    events = get_events()
+    for event in events:
+        if event.type == SDL_QUIT:
+            #cloas canvas?
+            starting = False
+            lev1 = False
+        elif event.type == SDL_MOUSEBUTTONDOWN:
+            click += 1
+        elif event.type == SDLK_z:
+            pass
+
 def start():
 
     Img.start_img(w, h)
     exp = load_image('explain.jpg')
 
-    def handle_events():
-        global starting
-        global click
-        click = 0
-
-        events = get_events()
-        for event in events:
-            if event.type == SDL_QUIT:
-                starting = False
-            elif event.type == SDL_MOUSEBUTTONDOWN:
-                click += 1
-
+    global level1
     starting = True
 
     while starting:
         handle_events()
 
-
         if click == 1:
             exp.draw_now(w // 2, h // 2)
-        elif click == 2:
-            starting = False
+        elif click >= 2:
+            break
+
 
 class level:
 
     @staticmethod
     def level1():
-        Img.level_background.level1(w, h)
+        Img.level_background.level1_back(w, h)
         Img.two_roper(w, h)
-        Img.draw_rope(w, h)
 
-        def handle_events():
-            global level1
+        global lev1
+        lev1 = True
 
-            events = get_events()
-            for event in events:
-                if event.type == SDL_QUIT:
-                    level1 = False
-                elif event.type == SDLK_z:
-                    pass
-
-        level1 = False
-
-        while level1:
+        while lev1:
             handle_events()
-        pass
+            Img.draw_rope(w, h)
+            pass

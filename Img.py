@@ -1,4 +1,4 @@
-from pico2d import load_image
+from pico2d import load_image, delay
 
 #####   움직이지 않는 이미지들    #####
 
@@ -16,25 +16,25 @@ def start_img(w, h):
 class level_background:
 
     @staticmethod
-    def level1(w, h):
-        lev1_back = load_image('level1_back.png')
+    def level1_back(w, h):
+        lev1_back = load_image('level_1.png')
         lev1_back.draw_now(w // 2, h // 2)
 
     @staticmethod
-    def level2(w, h):
-        lev2_back = load_image('level2_back.png')
+    def level2_back(w, h):
+        lev2_back = load_image('level_2.png')
         lev2_back.draw_now(w // 2, h // 2)
 
     @staticmethod
-    def level3(w, h):
-        lev3_back = load_image('level3_back.png')
+    def level3_back(w, h):
+        lev3_back = load_image('level_3.png')
         lev3_back.draw_now(w // 2, h // 2)
 
 
 # 줄 돌리는 사람
 def two_roper(w, h):
     roper1 = load_image('roping1.png')
-    roper2 = load_image('roping2.jpg')
+    roper2 = load_image('roping2.png')
     roper1.draw_now(w // 2, 4 * h // 5)
     roper2.draw_now(w // 2, h // 5)
 
@@ -44,6 +44,10 @@ def two_roper(w, h):
 
 def draw_rope(w, h):
     b_rope = load_image('back_rope.png')
-    f_rope = load_image('front_rope.jpg')
+    f_rope = load_image('front_rope.png')
+
+    frame = 0
     b_rope.clip_draw(b_rope.frame * 100, b_rope.action * 100, 100, 150, w // 2, 4*h // 5)
     f_rope.clip_draw(f_rope.frame * 100, f_rope.action * 100, 100, 150, w // 2, h // 5)
+    frame = (frame + 1) % 8
+    delay(0.05)

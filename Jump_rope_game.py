@@ -13,7 +13,7 @@ running = True
 #            running = False
 
 while running:
-    game_type.start()
+    #game_type.start()
     game_type.level.level1()
 
 
