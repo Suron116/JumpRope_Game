@@ -48,8 +48,7 @@ class level:
 
     @staticmethod
     def level1():
-        Img.level_background.level1_back(w, h)
-        Img.two_roper(w, h)
+
 
         global lev1
         lev1 = True

@@ -1,4 +1,4 @@
-from pico2d import load_image, delay
+from pico2d import load_image, delay, clear_canvas, update_canvas
 
 
 #####   움직이지 않는 이미지들    #####
@@ -48,8 +48,19 @@ def draw_rope(w, h):
     f_rope = load_image('front_rope.png')
 
     frame = 0
-    b_rope.clip_draw(frame * 100, 100, 100, 150, w // 2, 4*h // 5)
-    f_rope.clip_draw(frame * 100, 100, 100, 150, w // 2, h // 5)
 
-    frame = (frame + 1) % 8
-    delay(0.05)
+    # 700x150
+    while True:
+        clear_canvas()
+        level_background.level1_back(w, h)
+        two_roper(w, h)
+
+        f = 140
+
+        b_rope.clip_draw(frame * f, 0, 93, 150, w // 2, 2 * h // 3, 2 * w // 3, h // 3)
+        f_rope.clip_draw(frame * f, 0, 93, 150, w // 2, 1 * h // 3, 2 * w // 3, h // 3)
+
+        update_canvas()
+
+        frame = (frame + 1) % 5
+        delay(0.13)
