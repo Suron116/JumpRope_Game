@@ -1,20 +1,16 @@
 from pico2d import *
+import Img_no_change
 
 # 캔버스 사이즈
 w = 564
 h = 1001
 
+# 시작 이미지 불러오기
+Img_no_change.start_img(w, h)
 open_canvas(w, h)
 
-# 시작 이미지
-st_back = load_image('start_back.png')
-st_b = load_image('start_button.png')
-exp = load_image('explain.jpg')
-
-st_back.draw_now(w//2, h//2)
-st_b.draw_now(w//2, h//3)
-
 click = 0
+
 def handle_events():
     global starting
     global click
@@ -45,6 +41,8 @@ while starting:
 #플레이 이미지
 ropper1 = load_image('ropping1.png')
 ropper2 = load_image('ropping2.jpg')
+
+#움직이는 로프 이미지
 b_rope = load_image('back_rope.png')
 f_rope = load_image('front_rope.jpg')
 
