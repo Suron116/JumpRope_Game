@@ -1,4 +1,4 @@
-from pico2d import *
+from pico2d import load_image
 
 #####   움직이지 않는 이미지들    #####
 
