@@ -18,7 +18,9 @@ def start():
 
         events = get_events()
         for event in events:
-            if event.type == SDL_MOUSEBUTTONDOWN:
+            if event.type == SDL_QUIT:
+                starting = False
+            elif event.type == SDL_MOUSEBUTTONDOWN:
                 click += 1
 
     starting = True
@@ -45,7 +47,9 @@ class level:
 
             events = get_events()
             for event in events:
-                if event.type == SDLK_z:
+                if event.type == SDL_QUIT:
+                    level1 = False
+                elif event.type == SDLK_z:
                     pass
 
         level1 = False
