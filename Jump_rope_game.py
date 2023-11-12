@@ -1,4 +1,3 @@
-from pico2d import get_events, SDL_QUIT
 import game_type
 
 running = True

@@ -1,4 +1,4 @@
-from pico2d import *
+from pico2d import open_canvas, get_events, SDL_QUIT, close_canvas, SDL_MOUSEBUTTONDOWN, SDLK_z, load_image
 import Img
 
 # 캔버스 사이즈
