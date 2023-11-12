@@ -36,8 +36,8 @@ class level_background:
 def two_roper(w, h):
     roper1 = load_image('roping1.png')
     roper2 = load_image('roping2.png')
-    roper1.draw_now(w // 2, 4 * h // 5)
-    roper2.draw_now(w // 2, h // 5)
+    roper1.draw_now(w // 2, 5 * h // 7)
+    roper2.draw_now(w // 2, h // 7)
 
 
 #####   움직이는 이미지들   #####
@@ -56,8 +56,8 @@ def draw_rope(w, h):
         level_background.level1_back(w, h)
         two_roper(w, h)
 
-        b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 3, 2 * w // 3, h // 3)
-        f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 1 * h // 3, 2 * w // 3, h // 3)
+        b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
+        f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
 
         update_canvas()
 
