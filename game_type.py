@@ -64,12 +64,13 @@ class Level:
 
                 Img.level_background.level1_back(w, h)
                 Img.two_roper(w, h)
+                player_zxc.Players.player_z(w, h, jump)
 
                 b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
-                player_zxc.Players.player_z(w, h, jump)
                 f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
 
                 update_canvas()
 
                 frame = (frame + 1) % 5
                 delay(0.13)
+
