@@ -1,4 +1,4 @@
-from pico2d import (open_canvas, close_canvas, get_events, load_image,
+from pico2d import (close_canvas, get_events, load_image, clear_canvas, update_canvas, delay,
                     SDL_QUIT, SDL_MOUSEBUTTONDOWN, SDL_KEYDOWN, SDLK_ESCAPE, SDLK_z)
 import Img
 import player_zxc
@@ -6,6 +6,7 @@ import player_zxc
 # 루프 돌아서 빼놔야 무한 0 리셋 안됨
 global click
 click = 0
+
 
 def handle_events():
     global jump
@@ -26,7 +27,6 @@ def handle_events():
 
 
 def start(w, h):
-
     Img.start_img(w, h)
     exp = load_image('explain.jpg')
 
@@ -48,7 +48,28 @@ class Level:
     @staticmethod
     def level1(w, h):
 
+        # 줄 이미지 다운
+        b_rope = load_image('back_rope.png')
+        f_rope = load_image('front_rope.png')
+
         while True:
             handle_events()
-            Img.get_rope()
-            player_zxc.Players.player_z(w, h, jump)
+
+            Img.two_roper(w, h)
+            frame = 0
+
+            # 700x150
+            while True:
+                clear_canvas()
+
+                Img.level_background.level1_back(w, h)
+                Img.two_roper(w, h)
+
+                b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
+                player_zxc.Players.player_z(w, h, jump)
+                f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
+
+                update_canvas()
+
+                frame = (frame + 1) % 5
+                delay(0.13)
