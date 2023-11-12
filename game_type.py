@@ -1,4 +1,5 @@
-from pico2d import open_canvas, get_events, SDL_QUIT, close_canvas, SDL_MOUSEBUTTONDOWN, SDLK_z, load_image
+from pico2d import (open_canvas, close_canvas, get_events, load_image,
+                    SDL_QUIT, SDL_MOUSEBUTTONDOWN, SDL_KEYDOWN, SDLK_ESCAPE, SDLK_z)
 import Img
 
 # 캔버스 사이즈
@@ -19,6 +20,8 @@ def handle_events():
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
+            close_canvas()
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             close_canvas()
         elif event.type == SDL_MOUSEBUTTONDOWN:
             click += 1
@@ -57,4 +60,3 @@ class level:
         while lev1:
             handle_events()
             Img.draw_rope(w, h)
-            pass
