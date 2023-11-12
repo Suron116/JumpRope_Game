@@ -1,6 +1,7 @@
 from pico2d import (open_canvas, close_canvas, get_events, load_image,
                     SDL_QUIT, SDL_MOUSEBUTTONDOWN, SDL_KEYDOWN, SDLK_ESCAPE, SDLK_z)
 import Img
+import player_zxc
 
 # 캔버스 사이즈
 w = 564
@@ -17,6 +18,9 @@ def handle_events():
 
     global lev1
 
+    global jump
+    jump = False
+
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -25,10 +29,12 @@ def handle_events():
             close_canvas()
         elif event.type == SDL_MOUSEBUTTONDOWN:
             click += 1
-        elif event.type == SDLK_z:
-            pass
+        # 점프 키 입력
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_z:
+            jump = True
 
-def start():
+
+def start(w, h):
 
     Img.start_img(w, h)
     exp = load_image('explain.jpg')
@@ -52,7 +58,7 @@ def start():
 class level:
 
     @staticmethod
-    def level1():
+    def level1(w, h):
 
         global lev1
         lev1 = True
@@ -60,3 +66,4 @@ class level:
         while lev1:
             handle_events()
             Img.draw_rope(w, h)
+            player_zxc.players.player_z(w, h, jump)
