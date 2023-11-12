@@ -48,7 +48,7 @@ def two_roper(w, h):
 
 
 # n회 호출
-def draw_rope(w, h):
+def get_rope():
     img = False
 
     if not img:

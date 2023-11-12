@@ -1,6 +1,7 @@
 from pico2d import load_image, clear_canvas, delay
 
-class palyers:
+
+class Players:
     @staticmethod
     def player_z(w, h, jump):
         play_z = load_image('z_character.png')

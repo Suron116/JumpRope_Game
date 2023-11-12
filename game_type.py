@@ -3,21 +3,11 @@ from pico2d import (open_canvas, close_canvas, get_events, load_image,
 import Img
 import player_zxc
 
-# 캔버스 사이즈
-w = 564
-h = 1001
-open_canvas(w, h)
-
-lev1 = False
-
-
+# 루프 돌아서 빼놔야 무한 0 리셋 안됨
+global click
 click = 0
+
 def handle_events():
-    global starting
-    global click
-
-    global lev1
-
     global jump
     jump = False
 
@@ -27,6 +17,7 @@ def handle_events():
             close_canvas()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             close_canvas()
+        # 1회성 코드
         elif event.type == SDL_MOUSEBUTTONDOWN:
             click += 1
         # 점프 키 입력
@@ -39,12 +30,9 @@ def start(w, h):
     Img.start_img(w, h)
     exp = load_image('explain.jpg')
 
-    global level1
-    starting = True
-
     clicking_one = False
 
-    while starting:
+    while True:
         handle_events()
 
         if click == 1 and not clicking_one:
@@ -55,15 +43,12 @@ def start(w, h):
             return 0
 
 
-class level:
+class Level:
 
     @staticmethod
     def level1(w, h):
 
-        global lev1
-        lev1 = True
-
-        while lev1:
+        while True:
             handle_events()
-            Img.draw_rope(w, h)
-            player_zxc.players.player_z(w, h, jump)
+            Img.get_rope()
+            player_zxc.Players.player_z(w, h, jump)
