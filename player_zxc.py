@@ -1,13 +1,25 @@
-from pico2d import load_image, clear_canvas, update_canvas
+from pico2d import load_image, clear_canvas, delay
 
 class palyers:
+    global jump_hight
+    # 점프 높이 변경
+    jump_hight = 30
 
     @staticmethod
-    def player_z(w, h):
+    def player_z(w, h, jump):
         play_z = load_image('z_character.png')
 
         # 125x150
         while True:
-            clear_canvas()
-            play_z.draw_now(w // 2, h // 2)
-            update_canvas()
+
+            if not jump:
+                play_z.draw_now(w // 2, h // 2)
+            else:
+                for x in range(jump_hight):
+                    play_z.draw_now(w // 2, h // 2 + x)
+                    clear_canvas()
+                    delay(0.01)
+                for x in range(jump_hight):
+                    play_z.draw_now(w // 2, h // 2 + jump_hight - x)
+                    clear_canvas()
+                    delay(0.01)
