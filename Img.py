@@ -4,7 +4,7 @@ from pico2d import load_image, delay, clear_canvas, update_canvas
 #####   움직이지 않는 이미지들    #####
 
 
-# 시직 화면 그리기
+# 시직 화면 (1회 호출)
 def start_img(w, h):
     st_back = load_image('start_back.png')
     st_b = load_image('start_button.png')
@@ -13,7 +13,7 @@ def start_img(w, h):
     st_b.draw_now(w // 2, h // 3)
 
 
-# 레벨 별 배경화면
+# 레벨 별 배경화면 (1회 호출)
 class level_background:
 
     @staticmethod
@@ -32,10 +32,14 @@ class level_background:
         lev3_back.draw_now(w // 2, h // 2)
 
 
-# 줄 돌리는 사람
+# 줄 돌리는 사람 (n회 호출)
 def two_roper(w, h):
-    roper1 = load_image('roping1.png')
-    roper2 = load_image('roping2.png')
+    img = False
+    if not img:
+        roper1 = load_image('roping1.png')
+        roper2 = load_image('roping2.png')
+        img = True
+
     roper1.draw_now(w // 2, 5 * h // 7)
     roper2.draw_now(w // 2, h // 7)
 
@@ -43,9 +47,15 @@ def two_roper(w, h):
 #####   움직이는 이미지들   #####
 
 
+# n회 호출
 def draw_rope(w, h):
-    b_rope = load_image('back_rope.png')
-    f_rope = load_image('front_rope.png')
+    img = False
+
+    if not img:
+        b_rope = load_image('back_rope.png')
+        f_rope = load_image('front_rope.png')
+        img = True
+
     two_roper(w, h)
     frame = 0
 
