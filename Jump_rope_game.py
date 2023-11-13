@@ -6,7 +6,7 @@ w = 564
 h = 1001
 open_canvas(w, h)
 
-#game_type.start(w, h)
+game_type.start(w, h)
 game_type.Level.level1(w, h)
 
 
