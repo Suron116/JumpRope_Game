@@ -4,13 +4,14 @@ import Img
 import player_zxc
 
 # 루프 돌아서 빼놔야 무한 0 리셋 안됨
-global click
 click = 0
 
 
 def handle_events():
     global jump
     jump = False
+
+    global click
 
     events = get_events()
     for event in events:
