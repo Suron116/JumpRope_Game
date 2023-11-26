@@ -1,4 +1,4 @@
-from pico2d import load_image, update_canvas, delay
+from pico2d import load_image, delay, update_canvas
 
 
 class Players:
@@ -21,9 +21,9 @@ class Players:
         else:
             for x in range(jump_hight):
                 play_z.draw_now(w // 2, h // 2 + x)
-                update_canvas()
+                #update_canvas()
                 delay(0.01)
             for x in range(jump_hight):
                 play_z.draw_now(w // 2, h // 2 + jump_hight - x)
-                update_canvas()
+                #update_canvas()
                 delay(0.01)
