@@ -29,9 +29,9 @@ while True:
     else:
         for x in range (jump_hight):
             play_z.draw_now(w // 2, h // 2 + x)
-            clear_canvas()
+            #clear_canvas()
             delay(0.01)
         for x in range(jump_hight):
             play_z.draw_now(w // 2, h // 2 + jump_hight - x)
-            clear_canvas()
+            #clear_canvas()
             delay(0.01)
