@@ -6,6 +6,7 @@ import player_zxc
 # 루프 돌아서 빼놔야 무한 0 리셋 안됨
 click = 0
 
+
 def handle_events():
     global jump
     jump = False
@@ -47,19 +48,15 @@ class Level:
 
     @staticmethod
     def level1(w, h):
-
         # 줄 이미지 다운
         b_rope = load_image('back_rope.png')
         f_rope = load_image('front_rope.png')
 
+        global frame
+        frame = 0
+
         while True:
             handle_events()
-
-            Img.two_roper(w, h)
-
-            frame = 0
-            frame = (frame + 1) % 5
-
 
             # 700x150
             clear_canvas()
@@ -67,14 +64,10 @@ class Level:
             Img.level_background.level1_back(w, h)
             Img.two_roper(w, h)
 
-            b_rope.clip_draw(frame * 140, 0, 100, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
-            f_rope.clip_draw(frame * 140, 0, 100, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
-
-
+            b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
             player_zxc.Players.player_z(w, h, jump)
+            f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
+            frame = (frame + 1) % 5
 
             update_canvas()
-
-
             delay(0.13)
-
