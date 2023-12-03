@@ -5,7 +5,7 @@ import player_zxc
 
 # 루프 돌아서 빼놔야 무한 0 리셋 안됨
 click = 0
-
+cnt = 0
 
 def handle_events():
     global jump_z
@@ -16,6 +16,8 @@ def handle_events():
 
     global jump_c
     jump_c = False
+
+    global cnt
 
     global click
 
@@ -31,6 +33,8 @@ def handle_events():
         # 점프 키 입력
         elif event.type == SDL_KEYDOWN and event.key == SDLK_z:
             jump_z = True
+            cnt += 1
+            print(cnt)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
             jump_x = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_c:
@@ -64,7 +68,6 @@ class Level:
         f_rope = load_image('front_rope.png')
 
         global cnt
-        cnt = 0
         global frame
         frame = 0
 
@@ -78,12 +81,17 @@ class Level:
             Img.two_roper(w, h)
 
             b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
-            player_zxc.Players.player_z(w, h, jump_z)
             f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
+            player_zxc.Players.player_z(w, h, jump_z)
             frame = (frame + 1) % 5
 
             update_canvas()
             delay(0.13)
+
+            if cnt > 9:
+                return 0
+
+
 
     @staticmethod
     def level2(w, h):

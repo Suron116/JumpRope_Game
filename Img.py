@@ -5,8 +5,8 @@ def start_img(w, h):
     st_back = load_image('start_back.png')
     st_b = load_image('start_button.png')
 
-    st_back.draw(w // 2, h // 2)
-    st_b.draw(w // 2, h // 3)
+    st_back.draw_now(w // 2, h // 2)
+    st_b.draw_now(w // 2, h // 3)
 
 
 # 레벨 별 배경화면 (1회 호출)
