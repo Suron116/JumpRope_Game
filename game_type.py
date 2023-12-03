@@ -3,9 +3,13 @@ from pico2d import (close_canvas, get_events, load_image, clear_canvas, update_c
 import Img
 import player_zxc
 
+from multiprocessing import Process
+import time
+
 # 루프 돌아서 빼놔야 무한 0 리셋 안됨
 click = 0
 cnt = 0
+
 
 def handle_events():
     global jump_z
@@ -34,12 +38,11 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_z:
             jump_z = True
             cnt += 1
-            print(cnt)
+            # print(cnt)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
             jump_x = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_c:
             jump_c = True
-
 
 
 def start(w, h):
@@ -91,8 +94,6 @@ class Level:
             if cnt > 9:
                 cnt = 0
                 return 0
-
-
 
     @staticmethod
     def level2(w, h):
