@@ -9,7 +9,8 @@ import time
 # 루프 돌아서 빼놔야 무한 0 리셋 안됨
 click = 0
 cnt = 0
-
+cnt2 = 0
+cnt3 = 0
 
 def handle_events():
     global jump_z
@@ -22,6 +23,8 @@ def handle_events():
     jump_c = False
 
     global cnt
+    global cnt2
+    global cnt3
 
     global click
 
@@ -41,8 +44,10 @@ def handle_events():
             # print(cnt)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
             jump_x = True
+            cnt2 += 1
         elif event.type == SDL_KEYDOWN and event.key == SDLK_c:
             jump_c = True
+            cnt3 += 1
 
 
 def start(w, h):
@@ -122,7 +127,7 @@ class Level:
             update_canvas()
             delay(0.13)
 
-            if cnt > 9:
+            if cnt2 > 9:
                 cnt = 0
                 return 0
 
@@ -153,7 +158,7 @@ class Level:
             update_canvas()
             delay(0.13)
 
-            if cnt > 9:
+            if cnt3 > 9:
                 cnt = 0
                 return 0
 
