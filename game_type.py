@@ -1,5 +1,5 @@
 from pico2d import (close_canvas, get_events, load_image, clear_canvas, update_canvas, delay,
-                    SDL_QUIT, SDL_MOUSEBUTTONDOWN, SDL_KEYDOWN, SDLK_ESCAPE, SDLK_z)
+                    SDL_QUIT, SDL_MOUSEBUTTONDOWN, SDL_KEYDOWN, SDLK_ESCAPE, SDLK_z, SDLK_x, SDLK_c)
 import Img
 import player_zxc
 
@@ -8,8 +8,14 @@ click = 0
 
 
 def handle_events():
-    global jump
-    jump = False
+    global jump_z
+    jump_z = False
+
+    global jump_x
+    jump_x = False
+
+    global jump_c
+    jump_c = False
 
     global click
 
@@ -24,7 +30,12 @@ def handle_events():
             click += 1
         # 점프 키 입력
         elif event.type == SDL_KEYDOWN and event.key == SDLK_z:
-            jump = True
+            jump_z = True
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
+            jump_x = True
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_c:
+            jump_c = True
+
 
 
 def start(w, h):
@@ -52,6 +63,8 @@ class Level:
         b_rope = load_image('back_rope.png')
         f_rope = load_image('front_rope.png')
 
+        global cnt
+        cnt = 0
         global frame
         frame = 0
 
@@ -65,9 +78,40 @@ class Level:
             Img.two_roper(w, h)
 
             b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
-            player_zxc.Players.player_z(w, h, jump)
+            player_zxc.Players.player_z(w, h, jump_z)
             f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
             frame = (frame + 1) % 5
 
             update_canvas()
             delay(0.13)
+
+    @staticmethod
+    def level2(w, h):
+        # 줄 이미지 다운
+        b_rope = load_image('back_rope.png')
+        f_rope = load_image('front_rope.png')
+
+        global cnt
+        global frame
+        frame = 0
+
+        while True:
+            handle_events()
+
+            # 700x150
+            clear_canvas()
+
+            Img.level_background.level2_back(w, h)
+            Img.two_roper(w, h)
+
+            b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
+            player_zxc.Players.player_zx(w, h, jump_z, jump_x)
+            f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
+            frame = (frame + 1) % 5
+
+            update_canvas()
+            delay(0.13)
+
+            if cnt > 20:
+                cnt = 0
+                return 0
