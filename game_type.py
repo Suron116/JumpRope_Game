@@ -89,6 +89,7 @@ class Level:
             delay(0.13)
 
             if cnt > 9:
+                cnt = 0
                 return 0
 
 
@@ -120,6 +121,12 @@ class Level:
             update_canvas()
             delay(0.13)
 
-            if cnt > 20:
+            if cnt > 9:
                 cnt = 0
                 return 0
+
+    @staticmethod
+    def ending(w, h):
+        while True:
+            handle_events()
+            Img.level_background.ending_back(w, h)

@@ -27,6 +27,11 @@ class level_background:
         lev3_back = load_image('level_3.png')
         lev3_back.draw(w // 2, h // 2)
 
+    @staticmethod
+    def ending_back(w, h):
+        ending_back = load_image('ending_back.png')
+        ending_back.draw_now(w // 2, h // 2)
+
 
 # 줄 돌리는 사람 (n회 호출)
 def two_roper(w, h):

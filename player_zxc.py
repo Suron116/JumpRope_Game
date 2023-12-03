@@ -44,7 +44,7 @@ class Players:
         if not jump_z:
             play_z.draw_now(w // 3, h // 2)
         elif not jump_x:
-            play_x.draw_now( 2 * w // 3, h // 2)
+            play_x.draw_now(2 * w // 3, h // 2)
         elif jump_z:
             for x in range(jump_hight):
                 play_z.draw_now(w // 3, h // 2 + x)

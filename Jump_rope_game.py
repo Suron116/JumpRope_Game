@@ -12,4 +12,4 @@ game_type.start(w, h)
 # 레벨 1
 game_type.Level.level1(w, h)
 
-game_type.Level.level2(w, h)
+game_type.Level.ending(w, h)
