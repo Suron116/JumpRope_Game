@@ -84,6 +84,8 @@ class Players:
         if not jump_z:
             play_z.draw_now(w // 7, h // 2)
         else:
+            play_x.draw_now(w // 2, h // 2)
+            play_c.draw_now(6 * w // 7, h // 2)
             for x in range(jump_hight):
                 play_z.draw_now(w // 7, h // 2 + x)
                 update_canvas()
@@ -96,6 +98,7 @@ class Players:
         if not jump_x:
             play_x.draw_now(w // 2, h // 2)
         else:
+            play_c.draw_now(6 * w // 7, h // 2)
             for x in range(jump_hight):
                 play_x.draw_now(w // 2, h // 2 + x)
                 update_canvas()
