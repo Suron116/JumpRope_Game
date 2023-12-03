@@ -115,8 +115,39 @@ class Level:
             Img.two_roper(w, h)
 
             b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
-            player_zxc.Players.player_zx(w, h, jump_z, jump_x)
             f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
+            player_zxc.Players.player_zx(w, h, jump_z, jump_x)
+            frame = (frame + 1) % 5
+
+            update_canvas()
+            delay(0.13)
+
+            if cnt > 9:
+                cnt = 0
+                return 0
+
+    @staticmethod
+    def level3(w, h):
+        # 줄 이미지 다운
+        b_rope = load_image('back_rope.png')
+        f_rope = load_image('front_rope.png')
+
+        global cnt
+        global frame
+        frame = 0
+
+        while True:
+            handle_events()
+
+            # 700x150
+            clear_canvas()
+
+            Img.level_background.level3_back(w, h)
+            Img.two_roper(w, h)
+
+            b_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 4 * h // 7, 2 * w // 3, h // 3)
+            f_rope.clip_draw(frame * 140, 0, 93, 150, w // 2, 2 * h // 7, 2 * w // 3, h // 3)
+            player_zxc.Players.player_zxc(w, h, jump_z, jump_x, jump_c)
             frame = (frame + 1) % 5
 
             update_canvas()
