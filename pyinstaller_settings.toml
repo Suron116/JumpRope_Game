@@ -1,0 +1,16 @@
+# 메인 파일 이름을 지정하세요.
+main_file = 'Jume_rope_game.py'
+
+# 데이타 파일들을 지정하세요.
+data_files = [
+    'all_bgm.mp3', 'back_rope.png', 'c_character.png', 'ending_back.png',
+    'explain.jpg', 'front_rope.png', 'level_1.png', 'level_2.png',
+    'level_3.png', 'MP_Jump.wav', 're_button.png', 'roping1.png',
+    'roping2.png', 'start_back.png', 'start_button.png', 'x_charecter.png', 'z_character.png'
+]
+
+# 데이타가 들어있는 폴더들을 지정하세요.
+data_folders = [
+    'Jump_rope_game'
+]
+
