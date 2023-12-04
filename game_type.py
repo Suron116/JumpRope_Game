@@ -1,10 +1,10 @@
-from pico2d import (close_canvas, get_events, load_image, clear_canvas, update_canvas, delay,
+from pico2d import (close_canvas, get_events, load_image, clear_canvas, update_canvas, delay, load_wav,
                     SDL_QUIT, SDL_MOUSEBUTTONDOWN, SDL_KEYDOWN, SDLK_ESCAPE, SDLK_z, SDLK_x, SDLK_c)
 import Img
 import player_zxc
 
-from multiprocessing import Process
-import time
+#global jump_s
+#jump_s = load_wav('MP_Jump.wav')
 
 # 루프 돌아서 빼놔야 무한 0 리셋 안됨
 click = 0
@@ -28,6 +28,8 @@ def handle_events():
 
     global click
 
+    #global jump_s
+
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -40,6 +42,8 @@ def handle_events():
         # 점프 키 입력
         elif event.type == SDL_KEYDOWN and event.key == SDLK_z:
             jump_z = True
+            #jump_s.sound.set_volume(30)
+            #jump_s.play()
             cnt += 1
             # print(cnt)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
